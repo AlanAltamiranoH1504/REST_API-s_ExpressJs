@@ -8,6 +8,7 @@ import routes from "./routes/index.js";
 import conexion from "./config/db.js";
 import dotenv from "dotenv";
 import routesClientes from "./routes/routesClientes.js";
+import routesProductos from "./routes/routesProductos.js";
 dotenv.config();
 
 //Levantamiento del servidor
@@ -24,3 +25,4 @@ app.use(express.urlencoded({extended: true}));
 // Definicion de rutas
 app.use("/", routes);
 app.use("/clientes", routesClientes);
+app.use("/productos", routesProductos);
