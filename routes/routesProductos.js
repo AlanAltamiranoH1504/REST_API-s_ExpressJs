@@ -5,7 +5,8 @@ import {
     listProductos,
     saveProducto,
     updateImagenProducto,
-    updateProducto
+    updateProducto,
+    findProdutoByNombre
 } from "../controllers/ProductoController.js";
 import upload from "../middlewares/MulterImgProducto.js";
 const router = express.Router();
@@ -14,6 +15,7 @@ router.get("/", listProductos);
 router.post("/producto", saveProducto);
 router.post("/actualizar-img/:id", upload.single("imagen"), updateImagenProducto);
 router.get("/producto/:id", findProducto);
+router.post("/producto/busqueda", findProdutoByNombre);
 router.put("/producto/:id", updateProducto);
 router.delete("/producto/:id", deleteProducto);
 

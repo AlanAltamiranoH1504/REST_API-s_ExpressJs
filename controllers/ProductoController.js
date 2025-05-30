@@ -1,3 +1,4 @@
+import { log } from "console";
 import Producto from "../models/Producto.js";
 import {unlink} from 'fs/promises';
 import path from 'path';
@@ -79,6 +80,27 @@ const findProducto = async (req, res) => {
     }
 }
 
+
+const findProdutoByNombre = async (req, res) => {
+    const {productoBuscar} = req.body;
+    try {
+        const productos = await Producto.find({
+            nombre: {$regex: productoBuscar, $options: "i"}
+        });
+
+        if(productos.length === 0) {
+            return res.status(404).json({
+                error: "Producto no existente"
+            });
+        }
+        return res.status(200).json(productos);
+    }catch(e) {
+        return res.status(500).json({
+            error: e.message
+        });
+    }
+}
+
 const updateProducto = async (req, res) => {
     try {
         const id = req.params.id;
@@ -130,5 +152,6 @@ export {
     updateImagenProducto,
     findProducto,
     updateProducto,
-    deleteProducto
+    deleteProducto,
+    findProdutoByNombre
 }

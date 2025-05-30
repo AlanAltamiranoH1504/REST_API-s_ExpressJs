@@ -10,6 +10,7 @@ import dotenv from "dotenv";
 import routesClientes from "./routes/routesClientes.js";
 import routesProductos from "./routes/routesProductos.js";
 import routesPedidos from "./routes/routesPedidos.js";
+import cors from "cors";
 dotenv.config();
 
 //Levantamiento del servidor
@@ -22,6 +23,9 @@ app.listen(port, () => {
 //Habilitacion de peticiones json y de formularios
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+//Habilitacion de CORS para peticion fuera del puerto 5000
+app.use(cors());
 
 // Definicion de rutas
 app.use("/", routes);

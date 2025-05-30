@@ -5,7 +5,8 @@ const productosSchema = new Schema({
     nombre: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        index: true
     },
     precio: {
         type: Number,
