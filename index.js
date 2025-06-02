@@ -10,6 +10,7 @@ import dotenv from "dotenv";
 import routesClientes from "./routes/routesClientes.js";
 import routesProductos from "./routes/routesProductos.js";
 import routesPedidos from "./routes/routesPedidos.js";
+import routesUsuarios from "./routes/routesUsuarios.js";
 import cors from "cors";
 dotenv.config();
 
@@ -32,3 +33,4 @@ app.use("/", routes);
 app.use("/clientes", routesClientes);
 app.use("/productos", routesProductos);
 app.use("/pedidos", routesPedidos);
+app.use("/usuarios", routesUsuarios);
