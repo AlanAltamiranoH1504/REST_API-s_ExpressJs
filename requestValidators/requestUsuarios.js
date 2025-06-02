@@ -13,6 +13,15 @@ const requestSaveUsuario = [
         .isLength({min: 5}).withMessage("El password debe tener al menos 5 caracteres")
 ];
 
+const requestAutenticacionUsuario = [
+    body("email")
+        .isEmail().withMessage("El email debe tener el formato correcto")
+        .exists({checkNull: true, checkFalsy: true}).withMessage("El email es obligatorio para iniciar sesión"),
+    body("password")
+        .exists({checkNull: true, checkFalsy: true}).withMessage("El password es obligatoria para iniciar sesión")
+];
+
 export {
-    requestSaveUsuario
+    requestSaveUsuario,
+    requestAutenticacionUsuario
 }
