@@ -13,9 +13,9 @@ const router = express.Router();
 
 router.get("/prueba", pruebaControladorClientes);
 router.get("/", protegerRuta, listClientes);
-router.get("/cliente/:id", findCliente);
-router.post("/cliente", saveCliente);
-router.put("/cliente/:id", updateCliente);
-router.delete("/cliente/:id", deleteCliente);
+router.get("/cliente/:id", protegerRuta, findCliente);
+router.post("/cliente", protegerRuta, saveCliente);
+router.put("/cliente/:id", protegerRuta, updateCliente);
+router.delete("/cliente/:id", protegerRuta, deleteCliente);
 
 export default router;
